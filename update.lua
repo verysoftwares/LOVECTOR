@@ -1,7 +1,6 @@
-dt=0
-function update(hw_dt)
-    dt=dt+0.01
+t=0
+function update(deltatime)
     t = t+1
 end
 
-love.update= update
+love.update = update
