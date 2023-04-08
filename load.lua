@@ -1,0 +1,2 @@
+function love.load()
+end
