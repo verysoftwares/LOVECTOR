@@ -7,38 +7,38 @@ function linear(dot1,dot2,t)
 end
 
 function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
-    if end_t==nil then 
-        if start_t==nil then
-            if dot4==nil then
-                -- single point
-                local w=love.graphics.getLineWidth()
-                love.graphics.rectangle('fill',dot1.x-w/2,dot1.y-w/2,w,w)
-            else
-                -- linear
-                end_t=dot4
-                start_t=dot3
-                local len=math.sqrt((dot2.x-dot1.x)^2+(dot2.y-dot1.y)^2)
-                for dt=math.max(start_t,0),math.min(end_t,1),1/len do
-                    local lin=linear(dot1,dot2,dt)
-                    local w=love.graphics.getLineWidth()
-                    love.graphics.rectangle('fill',lin.x-w/2,lin.y-w/2,w,w)
-                end
-            end
-        else
-            -- quadratic
-            end_t=start_t
-            start_t=dot4
-            local len=math.sqrt((dot2.x-dot1.x)^2+(dot2.y-dot1.y)^2)+math.sqrt((dot3.x-dot2.x)^2+(dot3.y-dot2.y)^2)
-            for dt=math.max(start_t,0),math.min(end_t,1),1/len do
-                local lin=linear(dot1,dot2,dt)
-                local lin2=linear(dot2,dot3,dt)
-                local quad=linear(lin,lin2,dt)
-                local w=love.graphics.getLineWidth()
-                love.graphics.rectangle('fill',quad.x-w/2,quad.y-w/2,w,w)
-            end
+    local process
+    if type(dot4)=='table' then process='cubic'; end_t=end_t or 1; start_t=start_t or 0; 
+    elseif type(dot3)=='table' then process='quadratic'; end_t=start_t or 1; start_t=dot4 or 0
+    elseif type(dot2)=='table' then process='linear'; end_t=dot4 or 1; start_t=dot3 or 0;
+    elseif type(dot1)=='table' then process='point'
+    else return end
+
+    print(process,start_t,end_t)
+
+    if process=='point' then
+        local w=love.graphics.getLineWidth()
+        love.graphics.rectangle('fill',dot1.x-w/2,dot1.y-w/2,w,w)
+    end
+    if process=='linear' then
+        local len=math.sqrt((dot2.x-dot1.x)^2+(dot2.y-dot1.y)^2)
+        for dt=math.max(start_t,0),math.min(end_t,1),1/len do
+            local lin=linear(dot1,dot2,dt)
+            local w=love.graphics.getLineWidth()
+            love.graphics.rectangle('fill',lin.x-w/2,lin.y-w/2,w,w)
         end
-    else
-        -- cubic
+    end
+    if process=='quadratic' then
+        local len=math.sqrt((dot2.x-dot1.x)^2+(dot2.y-dot1.y)^2)+math.sqrt((dot3.x-dot2.x)^2+(dot3.y-dot2.y)^2)
+        for dt=math.max(start_t,0),math.min(end_t,1),1/len do
+            local lin=linear(dot1,dot2,dt)
+            local lin2=linear(dot2,dot3,dt)
+            local quad=linear(lin,lin2,dt)
+            local w=love.graphics.getLineWidth()
+            love.graphics.rectangle('fill',quad.x-w/2,quad.y-w/2,w,w)
+        end
+    end
+    if process=='cubic' then
         local len=math.sqrt((dot2.x-dot1.x)^2+(dot2.y-dot1.y)^2)+math.sqrt((dot3.x-dot2.x)^2+(dot3.y-dot2.y)^2)+math.sqrt((dot4.x-dot3.x)^2+(dot4.y-dot3.y)^2)
         for dt=math.max(start_t,0),math.min(end_t,1),1/len do
             local lin=linear(dot1,dot2,dt)
