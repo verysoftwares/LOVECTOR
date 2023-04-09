@@ -14,8 +14,6 @@ function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
     elseif type(dot1)=='table' then process='point'
     else return end
 
-    print(process,start_t,end_t)
-
     if process=='point' then
         local w=love.graphics.getLineWidth()
         love.graphics.rectangle('fill',dot1.x-w/2,dot1.y-w/2,w,w)
