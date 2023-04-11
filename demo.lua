@@ -25,6 +25,7 @@ end
 function demodraw2()
     love.graphics.clear(0.8,0.8,0.4)
 
+    -- magenta flash
     if t>=50+30 then
     love.graphics.setLineWidth(60)
 
@@ -71,6 +72,7 @@ end
 function demodraw3()
     love.graphics.clear(0.8,0.8,0.4)
 
+    -- magenta flash
     if t>=50+50 then
     love.graphics.setLineWidth(60)
 
