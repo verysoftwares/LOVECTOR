@@ -1,5 +1,5 @@
--- change this to paint_with('circles')
--- if you want round endpoints for lines.
+-- change this to paint_with('rectangles')
+-- if you want flat endpoints for lines.
     paint_with('circles')
 
 function draw()
