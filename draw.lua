@@ -1,8 +1,12 @@
+-- change this to paint_with('circles')
+-- if you want round endpoints for lines.
+    paint_with('circles')
+
 function draw()
     love.graphics.clear(0.8,0.8,0.4)
 
     love.graphics.setColor(0.4,0.4,0.2)
-    love.graphics.setLineWidth(5)
+    love.graphics.setLineWidth(15)
 
     -- single point
     bezier(dot(200,100))
@@ -17,3 +21,5 @@ function draw()
 end
 
 love.draw = draw
+
+-- TODO: install font(s)
