@@ -9,13 +9,13 @@ function draw()
     love.graphics.setLineWidth(15)
 
     -- single point
-    bezier(dot(200,100))
+        bezier(dot(200,100))
     -- line
-    bezier(dot(100,100),dot(400,400),(t-30*4)*0.02,(t-30)*0.02)
+        bezier(dot(100,100),dot(400,400),(t-30*4)*0.02,(t-30)*0.02)
     -- curve
-    bezier(dot(100,100),dot(400,400),dot(400,100),(t-30*5)*0.02,(t-30*2)*0.02)
+        bezier(dot(100,100),dot(400,400),dot(400,100),(t-30*5)*0.02,(t-30*2)*0.02)
     -- double curve
-    bezier(dot(100,100),dot(400,400),dot(400,100),dot(700,200),(t-30*6)*0.04,(t-30*3)*0.04)
+        bezier(dot(100,100),dot(400,400),dot(400,100),dot(700,200),(t-30*6)*0.04,(t-30*3)*0.04)
 
     if t>=30*6+30 then t=0 end
 end
