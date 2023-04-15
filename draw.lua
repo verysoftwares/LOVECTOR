@@ -21,5 +21,3 @@ function draw()
 end
 
 love.draw = draw
-
--- TODO: install font(s)
