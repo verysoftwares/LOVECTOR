@@ -1,4 +1,4 @@
--- change this to paint_with('rectangles')
+-- change this to paint_with('squares')
 -- if you want flat endpoints for lines.
     paint_with('circles')
 

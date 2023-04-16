@@ -1,6 +1,6 @@
-painting_with = 'rectangles'
+painting_with = 'squares'
 
 function paint_with(shape)
-    assert(shape=='rectangles' or shape=='circles', 'Invalid drawing shape, can be either \'rectangles\' or \'circles\'.')
+    assert(shape=='squares' or shape=='circles', 'Invalid drawing shape, can be either \'squares\' or \'circles\'.')
     painting_with = shape
 end
