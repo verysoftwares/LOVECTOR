@@ -17,7 +17,7 @@ function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
     if process=='point' then
         local w=love.graphics.getLineWidth()
         
-        if painting_with=='rectangles' then
+        if painting_with=='squares' then
         love.graphics.rectangle('fill',dot1.x-w/2,dot1.y-w/2,w,w)
         elseif painting_with=='circles' then
         love.graphics.circle('fill',dot1.x,dot1.y,w/2)
@@ -29,7 +29,7 @@ function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
             local lin=linear(dot1,dot2,dt)
             local w=love.graphics.getLineWidth()
             
-            if painting_with=='rectangles' then
+            if painting_with=='squares' then
             love.graphics.rectangle('fill',lin.x-w/2,lin.y-w/2,w,w)
             elseif painting_with=='circles' then
             love.graphics.circle('fill',lin.x,lin.y,w/2)
@@ -44,7 +44,7 @@ function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
             local quad=linear(lin,lin2,dt)
             local w=love.graphics.getLineWidth()
             
-            if painting_with=='rectangles' then
+            if painting_with=='squares' then
             love.graphics.rectangle('fill',quad.x-w/2,quad.y-w/2,w,w)
             elseif painting_with=='circles' then
             love.graphics.circle('fill',quad.x,quad.y,w/2)
@@ -62,7 +62,7 @@ function bezier(dot1,dot2,dot3,dot4,start_t,end_t)
             local cubic=linear(quad,quad2,dt)
             local w=love.graphics.getLineWidth()
 
-            if painting_with=='rectangles' then
+            if painting_with=='squares' then
             love.graphics.rectangle('fill',cubic.x-w/2,cubic.y-w/2,w,w)
             elseif painting_with=='circles' then
             love.graphics.circle('fill',cubic.x,cubic.y,w/2)
